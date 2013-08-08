@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\res" >
+            <file
+                name="ic_launcher"
+                path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\res\drawable-hdpi\ic_launcher.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\res\drawable-mdpi\ic_launcher.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\res\drawable-xhdpi\ic_launcher.png"
+                qualifiers="xhdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\res\drawable-xxhdpi\ic_launcher.png"
+                qualifiers="xxhdpi"
+                type="drawable" />
+            <file
+                name="about_fragment"
+                path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\res\layout\about_fragment.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_main"
+                path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\res\layout\activity_main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="contact_fragment"
+                path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\res\layout\contact_fragment.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_dummy"
+                path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\res\layout\fragment_dummy.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="radio_fragment"
+                path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\res\layout\radio_fragment.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\res\values\dimens.xml"
+                qualifiers="" >
+                <dimen name="activity_horizontal_margin" >16dp
+                </dimen>
+                <dimen name="activity_vertical_margin" >16dp
+                </dimen>
+            </file>
+            <file
+                path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\res\values\strings.xml"
+                qualifiers="" >
+                <string name="send" >Send
+                </string>
+                <string name="title_section1" >Listen
+                </string>
+                <string name="click_to_play" >Press Play
+                </string>
+                <string name="no_message" >Please Enter a Message
+                </string>
+                <string name="action_settings" >Settings
+                </string>
+                <string name="title_section3" >About
+                </string>
+                <string name="email" >jamie.magee@gmail.com
+                </string>
+                <string name="title_section2" >Contact Us
+                </string>
+                <string name="send_by" >Send By
+                </string>
+                <string name="about_app" ><a href="https://github.com/JamieMagee/ChaineFM" >
+https://github.com/JamieMagee/ChaineFM
+                    </a></string>
+                <string name="about_me" >        App by: 
+<a href="http://jamiemagee.co.uk" >
+Jamie Magee
+                    </a></string>
+                <string name="phone" >+447547132395
+                </string>
+                <string name="message" >Message
+                </string>
+                <string name="loading" >Loading
+                </string>
+                <string name="tagline" >The Sound of Larne
+                </string>
+                <string name="select_method" >Please Select SMS or Email
+                </string>
+                <string name="app_name" ><font fgcolor="#e5e50000" >
+Chaine
+                    </font> FM
+                </string>
+                <string name="sms" >SMS
+                </string>
+                <string name="pre_message" >CFM 
+                </string>
+                <string name="click_to_pause" >Now Playing
+                </string>
+                <string name="no_internet" >No Internet Connection Found
+                </string>
+            </file>
+            <file
+                path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\res\values\styles.xml"
+                qualifiers="" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Light" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+
+                <style
+                    name="AppTheme"
+                    parent="AppBaseTheme" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                </style>
+            </file>
+            <file
+                path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\res\values-v14\styles.xml"
+                qualifiers="v14" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light.DarkActionBar" >
+
+                    <!-- API 14 theme customizations can go here. -->
+                </style>
+            </file>
+        </source>
+        <source path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\build\res\rs\debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\debug\res" />
+    </dataSet>
+
+</merger>
