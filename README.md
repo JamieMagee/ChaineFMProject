@@ -17,6 +17,7 @@ To Do
  - Schedule information
  - Persistent notification when playing
  - Contact the show via Twitter or Facebook
+ - Implement [Google Analytics](https://developers.google.com/analytics/devguides/collection/android/)
 
 Building
 --------
