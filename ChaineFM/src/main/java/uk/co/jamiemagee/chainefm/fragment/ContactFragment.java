@@ -1,6 +1,10 @@
 package uk.co.jamiemagee.chainefm.fragment;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.telephony.SmsManager;
@@ -66,6 +70,35 @@ public class ContactFragment extends Fragment {
                         textBox.setText(null);
                         startActivity(email);
                         break;
+                    case R.id.twitter:
+                        if (message.length() <= 140) {
+                            Intent twitter = new Intent(Intent.ACTION_SEND);
+                            twitter.putExtra(Intent.EXTRA_TEXT, "@jamie_magee " + message );
+                            twitter.setType("text/plain");
+                            Intent chooser = Intent.createChooser(twitter, "Select twitter");
+                            sendby.clearCheck();
+                            textBox.setText(null);
+                            startActivity(chooser);
+                        }
+                        else {
+                            Toast.makeText(getActivity(), R.string.too_long, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), R.string.too_long2, Toast.LENGTH_LONG).show();
+                        }
+                        break;
+                    case R.id.facebook:
+                        Intent facebook;
+                        try {
+                            getActivity().getPackageManager().getPackageInfo("com.facebook.katana", 0);
+                            facebook = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://profile/148606168910"));
+                        } catch (Exception e) {
+                            facebook = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/chainefm"));
+                        }
+                        ClipboardManager clipboard = (ClipboardManager)getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                        ClipData clip = ClipData.newPlainText("message", message);
+                        clipboard.setPrimaryClip(clip);
+                        Toast.makeText(getActivity(), R.string.copied, Toast.LENGTH_LONG).show();
+                        startActivity(facebook);
+                        break;
                     default:
                         Toast.makeText(getActivity(), R.string.select_method, Toast.LENGTH_LONG).show();
                         break;
@@ -76,7 +109,4 @@ public class ContactFragment extends Fragment {
             }
         }
     };
-
-
-
 }

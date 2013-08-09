@@ -8,7 +8,7 @@ An Android app for listening to [Chaine FM](http://chainefm.com) on the go.
 Features
 --------
  - Play Chaine FM using built in media player
- - Contact the studio by SMS or email from the app
+ - Contact the studio by SMS, email, Twitter or Facebook from the app
  - Links to the website
 
 To Do
@@ -16,7 +16,6 @@ To Do
  - Now playing information
  - Schedule information
  - Persistent notification when playing
- - Contact the show via Twitter or Facebook
  - Implement [Google Analytics](https://developers.google.com/analytics/devguides/collection/android/)
 
 Building
