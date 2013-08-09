@@ -3,6 +3,8 @@ Chaine FM [![Build Status](https://travis-ci.org/JamieMagee/ChaineFMProject.png?
 
 An Android app for listening to [Chaine FM](http://chainefm.com) on the go.
 
+**NOTE** As Chaine FM is currently off air the app is being tested with another station, and the contact page will send messages to a test number/email address.
+
 Features
 --------
  - Play Chaine FM using built in media player
