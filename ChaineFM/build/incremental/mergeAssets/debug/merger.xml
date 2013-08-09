@@ -2,10 +2,10 @@
 <merger>
 
     <dataSet config="main" >
-        <source path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\assets" />
+        <source path="C:\Users\Jamie Magee\Documents\GitHub\ChaineFMProject\ChaineFM\src\main\assets" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="C:\Users\jamagee\Documents\GitHub\ChaineFMProject\ChaineFM\src\debug\assets" />
+        <source path="C:\Users\Jamie Magee\Documents\GitHub\ChaineFMProject\ChaineFM\src\debug\assets" />
     </dataSet>
 
 </merger>

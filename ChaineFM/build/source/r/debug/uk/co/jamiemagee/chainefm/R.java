@@ -11,7 +11,7 @@ public final class R {
     public static final class attr {
     }
     public static final class dimen {
-        /**  From: file:/C:/Users/jamagee/Documents/GitHub/ChaineFMProject/ChaineFM/src/main/res/values/dimens.xml 
+        /**  From: file:/C:/Users/Jamie%20Magee/Documents/GitHub/ChaineFMProject/ChaineFM/src/main/res/values/dimens.xml 
          */
         public static final int activity_horizontal_margin=0x7f040000;
         public static final int activity_vertical_margin=0x7f040001;
@@ -45,7 +45,7 @@ public final class R {
         public static final int radio_fragment=0x7f030004;
     }
     public static final class string {
-        /**  From: file:/C:/Users/jamagee/Documents/GitHub/ChaineFMProject/ChaineFM/src/main/res/values/strings.xml 
+        /**  From: file:/C:/Users/Jamie%20Magee/Documents/GitHub/ChaineFMProject/ChaineFM/src/main/res/values/strings.xml 
          */
         public static final int about_app=0x7f050000;
         public static final int about_me=0x7f050001;
@@ -70,13 +70,13 @@ public final class R {
         public static final int title_section3=0x7f050014;
     }
     public static final class style {
-        /**  From: file:/C:/Users/jamagee/Documents/GitHub/ChaineFMProject/ChaineFM/src/main/res/values/styles.xml 
+        /**  From: file:/C:/Users/Jamie%20Magee/Documents/GitHub/ChaineFMProject/ChaineFM/src/main/res/values/styles.xml 
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         
- From: file:/C:/Users/jamagee/Documents/GitHub/ChaineFMProject/ChaineFM/src/main/res/values-v14/styles.xml 
+ From: file:/C:/Users/Jamie%20Magee/Documents/GitHub/ChaineFMProject/ChaineFM/src/main/res/values-v14/styles.xml 
  API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f060000;

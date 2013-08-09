@@ -3,6 +3,7 @@ jdk: oraclejdk7
 env:
   matrix:
     - ANDROID_SDKS=android-18,sysimg-18  ANDROID_TARGET=android-18  ANDROID_ABI=armeabi-v7a
+
 before_install:
   # Install base Android SDK
   - sudo apt-get update -qq
@@ -13,9 +14,9 @@ before_install:
   - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
   # Gradle
-  - wget http://services.gradle.org/distributions/gradle-1.7-bin.zip
-  - unzip gradle-1.7-bin.zip
-  - export GRADLE_HOME=$PWD/gradle-1.7
+  - wget http://services.gradle.org/distributions/gradle-1.6-bin.zip
+  - unzip gradle-1.6-bin.zip
+  - export GRADLE_HOME=$PWD/gradle-1.6
   - export PATH=$GRADLE_HOME/bin:$PATH
 
   # install android build tools
@@ -29,20 +30,9 @@ before_install:
   # Note that sysimg-18 downloads the ARM, x86 and MIPS images (we should optimize this).
   # Other relevant API's
   - echo yes | android update sdk --filter platform-tools --no-ui --force > /dev/null
-  - echo yes | android update sdk --filter android-17 --no-ui --force > /dev/null
   - echo yes | android update sdk --filter android-18 --no-ui --force > /dev/null
-  - echo yes | android update sdk --filter sysimg-18 --no-ui --force > /dev/null
   - echo yes | android update sdk --filter extra-android-support --no-ui --force > /dev/null
   - echo yes | android update sdk --filter extra-android-m2repository --no-ui --force > /dev/null
 
-  # Create and start emulator
-  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
-  - emulator -avd test -no-skin -no-audio -no-window &
-
-before_script:
-  - chmod +x ci/wait_for_emulator.sh
-  - ci/wait_for_emulator.sh
-  - adb shell input keyevent 82 &
-
 script:
-  - gradle connectedInstrumentTest
+  - gradle clean build
