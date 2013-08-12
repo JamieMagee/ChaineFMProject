@@ -17,6 +17,7 @@ To Do
  - Now playing information
  - Schedule information
  - Implement [Google Analytics](https://developers.google.com/analytics/devguides/collection/android/)
+ - Support Android 2.1+ (API level 7) using [ActionBarCompat](http://android-developers.blogspot.co.uk/2013/08/actionbarcompat-and-io-2013-app-source.html)
 
 Building
 --------
