@@ -121,7 +121,8 @@ public class RadioFragment extends Fragment {
                         .setSmallIcon(R.drawable.ic_launcher)
                         .setContentTitle(getString(R.string.app_name))
                         .setContentText(getString(R.string.click_to_pause))
-                        .setTicker(getString(R.string.app_name)+"\n"+getString(R.string.click_to_pause));
+                        .setTicker(getString(R.string.app_name)+"\n"+getString(R.string.click_to_pause))
+                        .setOngoing(true);
 
         Intent resultIntent = new Intent(getActivity(), MainActivity.class);
 
