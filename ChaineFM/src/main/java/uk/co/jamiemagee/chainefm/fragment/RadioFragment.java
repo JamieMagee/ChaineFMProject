@@ -1,11 +1,16 @@
 package uk.co.jamiemagee.chainefm.fragment;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +22,7 @@ import android.widget.Toast;
 import java.io.IOException;
 
 import uk.co.jamiemagee.chainefm.R;
+import uk.co.jamiemagee.chainefm.activity.MainActivity;
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
 
@@ -88,6 +94,7 @@ public class RadioFragment extends Fragment {
                 spinner.setVisibility(View.INVISIBLE);
                 playing=true;
                 playpause.setClickable(true);
+                addNotification();
             }
         });
         mediaPlayer.prepareAsync();
@@ -98,6 +105,7 @@ public class RadioFragment extends Fragment {
         title.setText(R.string.click_to_play);
         mediaPlayer.stop();
         mediaPlayer.reset();
+        removeNotification();
         playing = false;
     }
 
@@ -105,5 +113,28 @@ public class RadioFragment extends Fragment {
         ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return (netInfo != null && netInfo.isConnectedOrConnecting());
+    }
+
+    private void addNotification() {
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(getActivity())
+                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setContentTitle(getString(R.string.app_name))
+                        .setContentText(getString(R.string.click_to_pause))
+                        .setTicker(getString(R.string.app_name)+"\n"+getString(R.string.click_to_pause));
+
+        Intent resultIntent = new Intent(getActivity(), MainActivity.class);
+
+        resultIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(getActivity(), 0, resultIntent, 0);
+        mBuilder.setContentIntent(resultPendingIntent);
+
+        NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(0,mBuilder.build());
+    }
+
+    private void removeNotification() {
+        NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.cancel(0);
     }
 }
