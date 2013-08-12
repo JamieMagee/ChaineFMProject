@@ -16,6 +16,9 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.Tracker;
+
 import java.util.ArrayList;
 
 import uk.co.jamiemagee.chainefm.R;
@@ -24,6 +27,9 @@ import uk.co.jamiemagee.chainefm.R;
  * Created by jamagee on 07/08/13.
  */
 public class ContactFragment extends Fragment {
+
+    private Tracker mGaTracker;
+    private GoogleAnalytics mGaInstance;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,6 +40,10 @@ public class ContactFragment extends Fragment {
         Button send = (Button)v.findViewById(R.id.send);
 
         send.setOnClickListener(myButtonListener);
+
+        mGaInstance = GoogleAnalytics.getInstance(getActivity());
+        mGaTracker = mGaInstance.getTracker(getString(R.string.ga_trackingId));
+
 
         return v;
     }
@@ -50,35 +60,32 @@ public class ContactFragment extends Fragment {
                 message = textBox.getText().toString();
                 switch(sendby.getCheckedRadioButtonId()){
                     case R.id.sms:
-                        String preMessage = getString(R.string.pre_message);
-                        message = preMessage + " " + message;
+                        message = getString(R.string.pre_message) + " " + message;
                         SmsManager smsManager = SmsManager.getDefault();
                         ArrayList<String> parts = smsManager.divideMessage(message);
-                        String phoneNumber = getString(R.string.phone);
-                        smsManager.sendMultipartTextMessage(phoneNumber, null, parts, null, null);
-                        sendby.clearCheck();
-                        textBox.setText(null);
+                        smsManager.sendMultipartTextMessage(getString(R.string.phone), null, parts, null, null);
+                        clear(sendby, textBox);
+                        mGaTracker.sendEvent("ui_action", "button_press",getString(R.string.sms), null );
                         break;
                     case R.id.email:
-                        String emailAddress[] = {getString(R.string.email)};
                         Intent email = new Intent(Intent.ACTION_SEND);
                         email.setType("message/rfc822");
-                        email.putExtra(Intent.EXTRA_EMAIL, emailAddress);
+                        email.putExtra(Intent.EXTRA_EMAIL, getString(R.string.email));
                         //email.putExtra(Intent.EXTRA_SUBJECT,"");
                         email.putExtra(Intent.EXTRA_TEXT, message);
-                        sendby.clearCheck();
-                        textBox.setText(null);
+                        clear(sendby, textBox);
                         startActivity(email);
+                        mGaTracker.sendEvent("ui_action", "button_press",getString(R.string.email), null );
                         break;
                     case R.id.twitter:
                         if (message.length() <= 140) {
                             Intent twitter = new Intent(Intent.ACTION_SEND);
-                            twitter.putExtra(Intent.EXTRA_TEXT, "@jamie_magee " + message );
+                            twitter.putExtra(Intent.EXTRA_TEXT, getString(R.string.twitter_user) + " " + message );
                             twitter.setType("text/plain");
                             Intent chooser = Intent.createChooser(twitter, "Select twitter");
-                            sendby.clearCheck();
-                            textBox.setText(null);
+                            mGaTracker.sendEvent("ui_action", "button_press",getString(R.string.twitter), null );
                             startActivity(chooser);
+                            clear(sendby, textBox);
                         }
                         else {
                             Toast.makeText(getActivity(), R.string.too_long, Toast.LENGTH_LONG).show();
@@ -97,7 +104,9 @@ public class ContactFragment extends Fragment {
                         ClipData clip = ClipData.newPlainText("message", message);
                         clipboard.setPrimaryClip(clip);
                         Toast.makeText(getActivity(), R.string.copied, Toast.LENGTH_LONG).show();
+                        mGaTracker.sendEvent("ui_action", "button_press",getString(R.string.facebook), null );
                         startActivity(facebook);
+                        clear(sendby, textBox);
                         break;
                     default:
                         Toast.makeText(getActivity(), R.string.select_method, Toast.LENGTH_LONG).show();
@@ -109,4 +118,9 @@ public class ContactFragment extends Fragment {
             }
         }
     };
+
+    private void clear(RadioGroup sendby, EditText textBox) {
+        sendby.clearCheck();
+        textBox.setText(null);
+    }
 }

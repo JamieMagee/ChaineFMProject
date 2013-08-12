@@ -32,3 +32,6 @@ local.properties
 *.ipr
 *~
 *.swp
+
+#Google Analytics settings
+analytics.xml

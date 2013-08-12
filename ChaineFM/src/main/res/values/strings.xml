@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--App name, etc.-->
     <string name="app_name"><font fgcolor="#e5e50000">Chaine</font> FM</string>
     <string name="tagline">The Sound of Larne</string>
-    <string name="action_settings">Settings</string>
+
+    Tab Titles
     <string name="title_section1">Listen</string>
     <string name="title_section2">Contact Us</string>
     <string name="title_section3">About</string>
+
+    <!--Radio states-->
     <string name="click_to_play">Press Play</string>
     <string name="click_to_pause">Now Playing</string>
     <string name="loading">Loading</string>
+
+    <!--Errors-->
     <string name="no_internet">No Internet Connection Found</string>
     <string name="no_message">Please Enter a Message</string>
     <string name="too_long">Your message is too long for Twitter</string>
     <string name="too_long2">Either shorten it or select another method to send by</string>
     <string name="select_method">Please Select SMS or Email</string>
+    <string name="copied">Message Copied to Clipboard</string>
+
+    <!--Contact Details-->
     <string name="pre_message">CFM </string>
     <string name="phone">+447547132395</string> #Actual number 80818
     <string name="email_address">jamie.magee@gmail.com</string> #Actual email studio@chainefm.com
+    <string name="twitter_user">\@ChaineFM</string>
+
+    <!--About fragment-->
     <string name="about_me">
         App by: <a href="http://jamiemagee.co.uk">Jamie Magee</a>
     </string>
     <string name="about_app">
         <a href="https://github.com/JamieMagee/ChaineFMProject">https://github.com/JamieMagee/ChaineFMProject</a>
     </string>
+
+    <!--Labels-->
     <string name="message">Message</string>
     <string name="send_by">Send By</string>
     <string name="send">Send</string>
@@ -31,6 +45,5 @@
     <string name="email">Email</string>
     <string name="twitter">Twitter</string>
     <string name="facebook">Facebook</string>
-    <string name="copied">Message Copied to Clipboard</string>
 
 </resources>
