@@ -48,6 +48,13 @@ public class ContactFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mGaTracker.sendView(getString(R.string.title_section1));
+    }
+
+
     private View.OnClickListener myButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

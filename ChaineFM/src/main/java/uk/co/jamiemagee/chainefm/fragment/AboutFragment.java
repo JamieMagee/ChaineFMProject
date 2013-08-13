@@ -9,9 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.Tracker;
+
 import uk.co.jamiemagee.chainefm.R;
 
 public class AboutFragment extends Fragment {
+
+    private Tracker mGaTracker;
+    private GoogleAnalytics mGaInstance;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,8 +33,16 @@ public class AboutFragment extends Fragment {
         aboutapp.setOnClickListener(myButtonListener);
         title.setOnClickListener(myButtonListener);
 
+        mGaInstance = GoogleAnalytics.getInstance(getActivity());
+        mGaTracker = mGaInstance.getTracker(getString(R.string.ga_trackingId));
 
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mGaTracker.sendView(getString(R.string.title_section3));
     }
 
     private View.OnClickListener myButtonListener = new View.OnClickListener() {

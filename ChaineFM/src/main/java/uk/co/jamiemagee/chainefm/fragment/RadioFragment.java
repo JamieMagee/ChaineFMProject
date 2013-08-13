@@ -19,6 +19,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.Tracker;
+
 import java.io.IOException;
 
 import uk.co.jamiemagee.chainefm.R;
@@ -37,6 +40,9 @@ public class RadioFragment extends Fragment {
     private boolean playing = false;
     private MediaPlayer mediaPlayer;
 
+    private Tracker mGaTracker;
+    private GoogleAnalytics mGaInstance;
+
     public RadioFragment() {
         mediaPlayer = new MediaPlayer();
     }
@@ -51,28 +57,40 @@ public class RadioFragment extends Fragment {
         spinner = (ProgressBar)v.findViewById(R.id.progressBar);
         title = (TextView)v.findViewById(R.id.titletext);
 
-        playpause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!playing) {
-                    if (isOnline()) {
-                        play();
-                    }
-                    else {
-                        Toast.makeText(getActivity(), R.string.no_internet, Toast.LENGTH_LONG).show();
-                    }
-                }
-                else {
-                    stop();
-                }
-            }
-        });
+        mGaInstance = GoogleAnalytics.getInstance(getActivity());
+        mGaTracker = mGaInstance.getTracker(getString(R.string.ga_trackingId));
+
+        playpause.setOnClickListener(myButtonListener);
         if (playing) {
             playpause.setImageResource(android.R.drawable.ic_media_pause);
             title.setText(R.string.click_to_pause);
         }
         return v;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mGaTracker.sendView(getString(R.string.title_section1));
+    }
+
+
+    private View.OnClickListener myButtonListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if (!playing) {
+                if (isOnline()) {
+                    play();
+                }
+                else {
+                    Toast.makeText(getActivity(), R.string.no_internet, Toast.LENGTH_LONG).show();
+                }
+            }
+            else {
+                stop();
+            }
+        }
+    };
 
     public void play() {
         playpause.setImageResource(android.R.drawable.ic_media_pause);
